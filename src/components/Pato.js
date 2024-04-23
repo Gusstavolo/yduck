@@ -73,8 +73,9 @@ export function Pato() {
     }, [position, nextPosition]);
   
     return (
-      <div 
-        className='pato'
+        
+      <div className='ObjectPato'
+        
         style={{
           position: 'absolute',
           top: `${position.top}vh`,
@@ -82,6 +83,10 @@ export function Pato() {
           transform: `rotate(${position.rotate}deg)`,
           transition: 'top 4s, left 4s, transform 2s', // Adiciona transição suave
         }}
-      />
+      >
+        <div className='pato'></div>
+        < div className="patoOver"></div>
+      </div>
+     
     );
   }
