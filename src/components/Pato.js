@@ -37,7 +37,10 @@ function calcularComandos(xAtual, yAtual, xFinal, yFinal) {
 
 
 
-export function Pato() {
+export function Pato({nome, mensagem}) {
+  
+    
+
     const [position, setPosition] = useState({ top: 0, left: 0, rotate: 0 });
     const [nextPosition, setNextPosition] = useState(null);
   
@@ -80,12 +83,19 @@ export function Pato() {
           position: 'absolute',
           top: `${position.top}vh`,
           left: `${position.left}vw`,
-          transform: `rotate(${position.rotate}deg)`,
-          transition: 'top 4s, left 4s, transform 2s', // Adiciona transição suave
+          
+          transition: 'top 5s, left 5s, transform 2s', // Adiciona transição suave
         }}
       >
-        <div className='pato'></div>
-        < div className="patoOver"></div>
+        <div className='pato'  style={{
+          transform: `rotate(${position.rotate}deg)`,
+          transition: 'transform 2s',
+        }}></div>
+        <div className="patoOver"></div>
+        <div className='box_info'>
+          <div>{nome}</div>
+          <div>{mensagem}</div>
+        </div>
       </div>
      
     );

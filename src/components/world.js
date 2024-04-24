@@ -13,7 +13,8 @@ export function World() {
         <div className='world'>
 
             <div className='worldSpace'>
-                  <Pato ></Pato>
+                  <Pato nome={"Cuzinho"} ></Pato>
+                  
                   <Pato ></Pato>
                   <Pato ></Pato>
             </div>

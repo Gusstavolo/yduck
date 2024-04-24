@@ -53,7 +53,15 @@ opacity: 0.3;
   backdrop-filter: blur(222px);
   
 }
-
+.box_info{
+  position:absolute;
+  display: flex;
+  z-index: 3;
+  width: 100px;
+  height: 100px;
+  rotate: 0deg;
+  background-color: blueviolet;
+}
 .worldSpace {
   width: 100%;
   height: 100%;
