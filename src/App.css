@@ -104,6 +104,7 @@ opacity: 0.3;
 }
 .generate_box_name,
 .generate_box_msm {
+ text-align: center;
   height: 20%;
   width: 100%;
   color: black;
@@ -146,6 +147,7 @@ opacity: 0.3;
 }
 .nomep {
   display: flex;
+  color: chocolate;
   font-size: 1.7rem;
   justify-content: center;
 }

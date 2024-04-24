@@ -1,5 +1,6 @@
 import '../App.css';
 import { Pato } from './Pato';
+import patoSound from './img/quak.mp3'; // Importe o arquivo de áudio
 
 import { useId, useState } from 'react';
 
@@ -25,6 +26,8 @@ export function World() {
       // Limpa os campos do formulário
       setNome('');
       setMensagem('');
+      const audio = new Audio(patoSound);
+      audio.play();
     }
   };
 
@@ -37,15 +40,20 @@ export function World() {
         {patos.map((pato, index) => (
           <Pato key={index} nome={pato.nome} mensagem={pato.mensagem} />
         ))}
-      </div>
 
+        
+      </div>
+        
+        <audio src={patoSound} id="patoAudio" preload="auto"></audio>
+        
+      
 
       <div className='config_generate_box'>
         <div className='generate_box'>
           <div className='jersey-10-regular'>NOME</div>
-          <input className='generate_box_name' type="text" value={nome} onChange={handleNomeChange} />
+          <input className='generate_box_name' type="text" value={nome} onChange={handleNomeChange} maxLength={10} />
           <div className='jersey-10-regular'>MENSAGEM</div>
-          <input className='generate_box_msm' type="text" value={mensagem} onChange={handleMensagemChange} />
+          <input className='generate_box_msm' type="text" value={mensagem} onChange={handleMensagemChange} maxLength={12}/>
           <input className='generate_box_button' type="submit" value="CRIAR" onClick={handleSubmit} />
         </div>
       </div>
