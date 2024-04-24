@@ -93,8 +93,11 @@ export function Pato({nome, mensagem}) {
         }}></div>
         <div className="patoOver"></div>
         <div className='box_info'>
-          <div>{nome}</div>
-          <div>{mensagem}</div>
+          <div className='box_info_layer'>
+              <div className='nomep jersey-10-regular'>{nome}</div>
+              <div className='nomem jersey-10-regular'>{mensagem}</div>
+          </div>
+          
         </div>
       </div>
      
