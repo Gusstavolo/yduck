@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import patoSound from './img/quak.mp3'; // Importe o arquivo de áudio
 
 
 
@@ -9,6 +10,19 @@ export function Pato({nome, mensagem}) {
 
     const [position, setPosition] = useState({ top: 0, left: 0, rotate: 0 });
     const [nextPosition, setNextPosition] = useState(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+   const clickInfo = () =>{
+    const audio = new Audio(patoSound);
+
+    if(!isVisible){audio.play()
+
+    setIsVisible(true); // Define isVisible como false quando a div é clicada
+    
+    setTimeout(() => {
+      setIsVisible(false); 
+    }, 2500);}
+  }
   
     useEffect(() => {
       const interval = setInterval(() => {
@@ -43,7 +57,7 @@ export function Pato({nome, mensagem}) {
   
     return (
         
-      <div className='ObjectPato'
+      <div className='ObjectPato' onClick={clickInfo}
         
         style={{
           position: 'absolute',
@@ -53,19 +67,20 @@ export function Pato({nome, mensagem}) {
           transition: 'top 5s, left 5s, transform 2s', // Adiciona transição suave
         }}
       >
-        <div className='pato'  style={{
+        <div className='pato' style={{
           transform: `rotate(${position.rotate}deg)`,
           transition: 'transform 2s',
         }}></div>
         <div className="patoOver"></div>
-        <div className='box_info'>
+        <div className={isVisible ?'box_info show':'box_info'}>
 
-          <div className='box_info_layer'>
-              <div className='nomep jersey-10-regular'>{nome}</div>
-              <div className='nomem jersey-10-regular'>{mensagem}</div>
-          </div>
+            <div className='box_info_layer'>
+                <div className='nomep jersey-10-regular'>{nome}</div>
+                <div className='nomem jersey-10-regular'>{mensagem}</div>
+            </div>
           
         </div>
+        <audio src={patoSound} id="patoAudio" preload="auto"></audio>
       </div>
      
     );

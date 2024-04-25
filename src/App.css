@@ -11,6 +11,8 @@
  
 }
 
+
+
 .world {
   display: flex;
  
@@ -68,6 +70,7 @@ opacity: 0.3;
   background: url("./components/img/dig2.png") no-repeat;
   background-size: 100%;
 }
+.show {display: flex;}
 .worldSpace {
   width: 100%;
   height: 100%;
