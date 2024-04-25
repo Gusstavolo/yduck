@@ -3,40 +3,6 @@ import { useEffect } from 'react';
 
 
 
-
-function calcularComandos(xAtual, yAtual, xFinal, yFinal) {
-    let comandos = [];
-
-    // calcular diferenças
-    let diffX = xFinal - xAtual;
-    let diffY = yFinal - yAtual;
-
-    // gera comandos baseados nos valores binários
-    while (xAtual !== xFinal || yAtual !== yFinal) {
-        if (xAtual !== xFinal && Math.abs(diffX) > Math.abs(diffY)) {
-            xAtual += Math.sign(diffX);
-            comandos.push({ x: xAtual, y: yAtual });
-        } else if (yAtual !== yFinal && Math.abs(diffY) > Math.abs(diffX)) {
-            yAtual += Math.sign(diffY);
-            comandos.push({ x: xAtual, y: yAtual });
-        } else {
-            // Caso os eixos tenham a mesma diferença, priorize um aleatório
-            let random = Math.random();
-            if (random < 0.5 && xAtual !== xFinal) {
-                xAtual += Math.sign(diffX);
-                comandos.push({ x: xAtual, y: yAtual });
-            } else if (yAtual !== yFinal) {
-                yAtual += Math.sign(diffY);
-               comandos.push({ x: xAtual, y: yAtual });
-            }
-        }
-    }
-
-    return comandos;
-}
-
-
-
 export function Pato({nome, mensagem}) {
   
     
@@ -93,6 +59,7 @@ export function Pato({nome, mensagem}) {
         }}></div>
         <div className="patoOver"></div>
         <div className='box_info'>
+
           <div className='box_info_layer'>
               <div className='nomep jersey-10-regular'>{nome}</div>
               <div className='nomem jersey-10-regular'>{mensagem}</div>

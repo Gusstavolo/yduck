@@ -43,7 +43,7 @@
 opacity: 0.3;
   position: relative;
   left: -3px;
-  top:-5px;
+  top:0px;
   width: 80px;
   height: 90px;
   background-color: black;
@@ -54,9 +54,9 @@ opacity: 0.3;
   backdrop-filter: blur(222px);
   
 }
-.box_info{
+.box_info {
   position:absolute;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   left: 20px;
