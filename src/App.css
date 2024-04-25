@@ -154,3 +154,10 @@ opacity: 0.3;
   font-size: 1.7rem;
   justify-content: center;
 }
+@media screen and (width < 600px) {
+  .world {
+    background-size: 190%;
+  }
+
+  
+}

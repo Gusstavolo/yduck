@@ -6,9 +6,10 @@ import patoSound from './img/quak.mp3'; // Importe o arquivo de áudio
 
 export function Pato({nome, mensagem}) {
   
-    
+  const rtop = Math.random() * 100; // 0vh a 100vh
+  const rleft = Math.random() * 100; // 0vw a 100vw
 
-    const [position, setPosition] = useState({ top: 0, left: 0, rotate: 0 });
+    const [position, setPosition] = useState({ top: rtop, left: rleft, rotate: 0 });
     const [nextPosition, setNextPosition] = useState(null);
     const [isVisible, setIsVisible] = useState(false);
 
