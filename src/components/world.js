@@ -1,7 +1,7 @@
 import '../App.css';
 import { Pato } from './Pato';
 import patoSound from './img/quak.mp3'; // Importe o arquivo de áudio
-
+import { setPlansActions } from '../services/actions/plansActions.ts';
 import { useId, useState } from 'react';
 
 
@@ -39,7 +39,10 @@ export function World() {
         {/* Renderiza os componentes Pato com base nas informações armazenadas no estado */}
         {patos.map((pato, index) => (
           <Pato key={index} nome={pato.nome} mensagem={pato.mensagem} />
-        ))}
+          
+        ))
+        } 
+       
 
         
       </div>
