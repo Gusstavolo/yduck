@@ -1,6 +1,5 @@
-import {db} from "../../firebaseConfig.ts";
+/* import {db} from "../../firebaseConfig.js";
 import { getFirestore, collection } from "firebase/firestore";
-
 
 const plansReference = collection(db, "pato");
 
@@ -12,3 +11,4 @@ export async function setDuckAcess(body: any) {
     const response = await plansReference.doc().set(body);
     return response;
 }
+ */

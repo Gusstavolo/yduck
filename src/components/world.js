@@ -3,6 +3,8 @@ import { Pato } from './Pato';
 import patoSound from './img/quak.mp3'; // Importe o arquivo de áudio
 import { setPlansActions } from '../services/actions/plansActions.ts';
 import { useId, useState } from 'react';
+import firebase from 'firebase/app';
+import 'firebase/firestore'; // Importe o Firestore se ainda não o fez
 
 
 export function World() {
@@ -18,7 +20,7 @@ export function World() {
     setMensagem(event.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // Verifica se o nome e a mensagem não estão vazios
     if (nome.trim() !== '' && mensagem.trim() !== '') {
       // Adiciona um novo pato ao estado
@@ -28,7 +30,14 @@ export function World() {
       setMensagem('');
       const audio = new Audio(patoSound);
       audio.play();
+      try {
+        await setPlansActions({nome: 'nome', mensagem: 'mensagem'})
+      }
+      catch (error){
+        console.error('Erro ao adicionar pato ao Firestore:', error);
+      }
     }
+    
   };
 
   return (

@@ -1,4 +1,5 @@
-import { addDuckAcess, setDuckAcess } from "../dataAcess/duckAcess.ts";
+/*
+import { addDuckAcess, setDuckAcess } from "../dataAcess/duckAcess.js";
 
 
 export async function addPlansActions(body: any){
@@ -8,4 +9,4 @@ export async function addPlansActions(body: any){
 export async function setPlansActions(body: any){
     const response = await setDuckAcess(body);
     return response;
-}
+} */
