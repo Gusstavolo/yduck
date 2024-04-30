@@ -1,7 +1,7 @@
-/* import {db} from "../../firebaseConfig.js";
-import { getFirestore, collection } from "firebase/firestore";
+ /*import {db} from "../../firebaseConfig.js";
 
-const plansReference = collection(db, "pato");
+
+const plansReference = db.collection("pato");
 
 export async function addDuckAcess(body: any) {
     const response = await plansReference.add(body);
@@ -10,5 +10,5 @@ export async function addDuckAcess(body: any) {
 export async function setDuckAcess(body: any) {
     const response = await plansReference.doc().set(body);
     return response;
-}
- */
+}*/
+ 

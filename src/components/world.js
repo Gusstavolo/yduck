@@ -4,6 +4,8 @@ import patoSound from './img/quak.mp3'; // Importe o arquivo de áudio
 import { setPlansActions } from '../services/actions/plansActions.ts';
 import { useId, useState } from 'react';
 import firebase from 'firebase/app';
+import {db} from '../firebaseConfig.js';
+import { collection, addDoc } from "firebase/firestore"; 
 import 'firebase/firestore'; // Importe o Firestore se ainda não o fez
 
 
@@ -30,13 +32,21 @@ export function World() {
       setMensagem('');
       const audio = new Audio(patoSound);
       audio.play();
-      try {
-        await setPlansActions({nome: 'nome', mensagem: 'mensagem'})
-      }
-      catch (error){
-        console.error('Erro ao adicionar pato ao Firestore:', error);
-      }
-    }
+
+
+      db.collection("pato").add({
+        nome: nome,
+        mensagem: mensagem
+    })
+    .then((docRef) => {
+        console.log("Document written with ID: ", docRef.id);
+    })
+    .catch((error) => {
+        console.error("Error adding document: ", error);
+    });
+
+
+  }
     
   };
 
