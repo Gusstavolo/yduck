@@ -1,6 +1,8 @@
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://support.google.com/firebase/answer/7015592
 const firebaseConfig = {
   apiKey: "AIzaSyDirH_Kr-R8xEqocJHWxOiJUyy-6Ti4qas",
   authDomain: "yduck-33d8a.firebaseapp.com",
@@ -12,10 +14,9 @@ const firebaseConfig = {
   measurementId: "G-67EKJBN8ND"
 };
 
-// Inicialize o aplicativo Firebase com a configuração fornecida
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Obtenha uma referência para o serviço Firestore
-const db = getFirestore(app);
 
-export { db }; // Exporte a referência do Firestore para uso em outros lugares do seu aplicativo
+// Initialize Cloud Firestore and get a reference to the service
+export const db = getFirestore(app);

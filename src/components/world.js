@@ -1,18 +1,31 @@
 import '../App.css';
 import { Pato } from './Pato';
 import patoSound from './img/quak.mp3'; // Importe o arquivo de áudio
-import { setPlansActions } from '../services/actions/plansActions.ts';
 import { useId, useState } from 'react';
-import firebase from 'firebase/app';
-import {db} from '../firebaseConfig.js';
-import { collection, addDoc } from "firebase/firestore"; 
-import 'firebase/firestore'; // Importe o Firestore se ainda não o fez
+import { collection, addDoc, getDocs } from "firebase/firestore"; 
+import { db } from '../firebaseConfig';
+
+import React, { useEffect } from 'react';
 
 
 export function World() {
   const [patos, setPatos] = useState([]);
   const [nome, setNome] = useState('');
   const [mensagem, setMensagem] = useState('');
+
+  useEffect(() => {
+    const fetchPatos = async () => {
+      const querySnapshot = await getDocs(collection(db, "pato"));
+      const patosData = [];
+      querySnapshot.forEach((doc) => {
+        const { name, msg } = doc.data();
+        patosData.push({ id: doc.id, nome: name, mensagem: msg });
+      });
+      setPatos(patosData);
+    };
+
+    fetchPatos();
+  }, []);
 
   const handleNomeChange = (event) => {
     setNome(event.target.value);
@@ -33,18 +46,17 @@ export function World() {
       const audio = new Audio(patoSound);
       audio.play();
 
-
-      db.collection("pato").add({
-        nome: nome,
-        mensagem: mensagem
-    })
-    .then((docRef) => {
+      try {
+        const docRef = await addDoc(collection(db, "pato"), {
+          name: nome,
+          msg: mensagem,
+        });
         console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
-
+      } catch (e) {
+        console.error("Error adding document: ", e);
+      }
+    
+     
 
   }
     
